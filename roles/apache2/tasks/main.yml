@@ -26,3 +26,6 @@
 - name: "Creating flaskapp.wsgi file"
   template: src=flaskapp.wsgi.j2 dest="{{ path_flask }}/flaskapp.wsgi"
   notify: restart apache2
+
+- name: "start web server"
+  command: FLASK_APP=app.py flask run --host=134.209.150.246
