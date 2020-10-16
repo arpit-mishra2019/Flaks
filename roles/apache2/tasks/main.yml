@@ -28,4 +28,4 @@
   notify: restart apache2
 
 - name: "start web server"
-  command: FLASK_APP=app.py flask run --host=134.209.150.246
+  command: FLASK_APP=/var/www/FlaskApp/ flask run --host=0.0.0.0
