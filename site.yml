@@ -1,5 +1,5 @@
 ---
- - hosts: 134.209.150.246
+ - hosts: webserver
    become: True
    vars_files:
      - vars.yml
