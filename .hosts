@@ -1,2 +1,7 @@
-[webserver]
-134.209.150.246
+all:
+  hosts:
+    134.209.150.246:
+  children:
+    webservers:
+      hosts:
+        134.209.150.246:
