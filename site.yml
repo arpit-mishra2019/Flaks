@@ -2,8 +2,11 @@
  - name: Run Flask Application
    hosts: webservers
    remote_user: root
+   become: True
+   become_method: sudo
    vars_files:
      - vars.yml
+   tasks:
    - name: "Copy Flask Files"
      template:
        src: ./*
