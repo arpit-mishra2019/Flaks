@@ -7,12 +7,13 @@
    vars_files:
      - vars.yml
    tasks:
-   - name: "Copy Flask Files"
-     command: {{ item }}
-     with_items:
-     - rm -rf /var/www/flask
-     - mkdir /var/www/flask
-     - cp ./* /var/www/flask
-     command: "rm -rf /var/www/flask && mkdir /var/www/flask && cp ./* /var/www/flask && ls -l /var/www/flask"
+   - name: "Remove Old Files"
+     command: rm -rf /var/www/flask
+   - name: Create Directory
+     command: mkdir /var/www/flask
+   - name: Copy New Files
+     command: cp -r /var/lib/jenkins/workspace/Ansible_test/ /var/www/flask
    - name: "Run Flask Server"
-     command: chdir=/var/www/flask python __init__.py
+     shell: "(cd /var/www/flask/Ansible_test python __init__.py > log.txt 2>&1 &)"
+     async: 10
+     poll: 0
