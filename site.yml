@@ -8,8 +8,6 @@
      - vars.yml
    tasks:
    - name: "Copy Flask Files"
-     template:
-       src: ./*
-       dest: /var/www/flask
+     command: rm -rf /var/www/flask && mkdir /var/www/flask && cp ./* /var/www/flask
    - name: "Run Flask Server"
      command: cd /var/www/flask && python __init__.py
