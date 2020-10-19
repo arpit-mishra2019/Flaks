@@ -8,6 +8,11 @@
      - vars.yml
    tasks:
    - name: "Copy Flask Files"
+     command: {{ item }}
+     with_items:
+     - rm -rf /var/www/flask
+     - mkdir /var/www/flask
+     - cp ./* /var/www/flask
      command: "rm -rf /var/www/flask && mkdir /var/www/flask && cp ./* /var/www/flask && ls -l /var/www/flask"
    - name: "Run Flask Server"
-     command: "cd /var/www/flask && python __init__.py"
+     command: chdir=/var/www/flask python __init__.py
